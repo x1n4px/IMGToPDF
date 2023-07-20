@@ -1,0 +1,42 @@
+<div class="container">
+  <header>
+    <h1>Convertir imagen a PDF</h1>
+  </header>
+  <div class="interno">
+    <div id="internoBody">
+      <div class="input-div">
+        <input class="input" name="file" type="file" (change)="onFileSelected($event)" accept="image/*">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round"
+          viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon">
+          <polyline points="16 16 12 12 8 16"></polyline>
+          <line y2="21" x2="12" y1="12" x1="12"></line>
+          <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
+          <polyline points="16 16 12 12 8 16"></polyline>
+        </svg>
+      </div>
+      <!-- <input type="file" (change)="onFileSelected($event)" accept="image/*"> -->
+      <button *ngIf="selectedFile" (click)="convertToPdf()" [disabled]="!selectedFile">Convertir a PDF</button>
+
+
+    </div>
+    <div class="square" *ngIf="pdfDownloadLink">
+      <i style="--clr:#00ff0a;"></i>
+      <i style="--clr:#ff0057;"></i>
+      <i style="--clr:#fffd44;"></i>
+      <div >
+        <a class="DownloadBtn" [href]="pdfDownloadLink" download="imagen_convertida.pdf">Descargar PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="pdfDownloadLink" class="btnLimpiar">
+    <a class="btn" (click)="limpiarImagen()">
+      <p class="paragraph"> Limpiar </p>
+      <span class="icon-wrapper">
+        <svg class="icon" width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 7V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V7M6 7H5M6 7H8M18 7H19M18 7H16M10 11V16M14 11V16M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7M8 7H16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </span>
+    </a>
+  </div>
+</div>
